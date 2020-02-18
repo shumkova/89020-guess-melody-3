@@ -1,11 +1,5 @@
-import React from 'react';
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import {shallow} from "enzyme";
 import WelcomeScreen from "./welcome-screen";
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
 
 it(`Welcome button should be pressed`, () => {
   const onWelcomeButtonClick = jest.fn();
