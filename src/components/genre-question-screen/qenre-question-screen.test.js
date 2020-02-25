@@ -25,8 +25,7 @@ it(`GenreQuestionScreen is rendered correctly`, () => {
       question={question}
       onAnswer={() => {}}
     />
-  ),
-  {
+  ), {
     createNodeMock: () => {
       return {};
     }

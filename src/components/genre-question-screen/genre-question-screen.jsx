@@ -7,13 +7,14 @@ class GenreQuestionScreen extends PureComponent {
     super(props);
 
     this.state = {
+      activePlayer: 0,
       answers: [false, false, false, false],
     };
   }
 
   render() {
     const {onAnswer, question} = this.props;
-    const {answers: userAnswers} = this.state;
+    const {answers: userAnswers, activePlayer} = this.state;
     const {answers, genre} = question;
 
     return (
@@ -29,20 +30,25 @@ class GenreQuestionScreen extends PureComponent {
           {answers.map((answer, i) => (
             <div key={`${i}-${answer.src}`} className="track">
               <AudioPlayer
-                isPlaying={true}
+                onPlayButtonClick={() => {
+                  this.setState({
+                    activePlayer: activePlayer === i ? -1 : i,
+                  });
+                }}
+                isPlaying={i === activePlayer}
                 src={answer.src}
               />
               <div className="game__answer">
                 <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`}
-                  id={`answer-${i}`}
-                  checked={userAnswers[i]}
-                  onChange={(evt) => {
-                    const value = evt.target.checked;
+                       id={`answer-${i}`}
+                       checked={userAnswers[i]}
+                       onChange={(evt) => {
+                         const value = evt.target.checked;
 
-                    this.setState({
-                      answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
-                    });
-                  }}
+                         this.setState({
+                           answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
+                         });
+                       }}
                 />
                 <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
               </div>
