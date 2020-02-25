@@ -18,7 +18,6 @@ export default [
       genre: `rock`,
     }],
   },
-
   {
     type: `artist`,
     song: {
@@ -35,5 +34,5 @@ export default [
       picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `Jim Beam`,
     }],
-  }
+  },
 ];
