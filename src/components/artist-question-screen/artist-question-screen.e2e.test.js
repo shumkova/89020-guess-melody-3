@@ -44,6 +44,7 @@ it(`Click on user answer should pass to the callback data-object from which this
       <ArtistQuestionScreen
         onAnswer={onAnswer}
         question={question}
+        renderPlayer={() => {}}
       />
   );
 

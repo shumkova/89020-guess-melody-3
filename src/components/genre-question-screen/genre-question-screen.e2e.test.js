@@ -29,10 +29,12 @@ const mock = {
 it(`When user answers genre question form is not sent`, () => {
   const {question} = mock;
   const onAnswer = jest.fn();
+
   const genreQuestion = shallow(
       <GenreQuestionScreen
         onAnswer={onAnswer}
         question={question}
+        renderPlayer={() => {}}
       />
   );
 
@@ -55,6 +57,7 @@ it(`User answer passed to callback is consistent with "userAnswer" prop`, () => 
       <GenreQuestionScreen
         onAnswer={onAnswer}
         question={question}
+        renderPlayer={() => {}}
       />
   );
 
