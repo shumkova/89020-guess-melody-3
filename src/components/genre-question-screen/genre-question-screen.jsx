@@ -30,15 +30,14 @@ class GenreQuestionScreen extends PureComponent {
               {renderPlayer(answer.src, i)}
               <div className="game__answer">
                 <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`}
-                       id={`answer-${i}`}
-                       checked={userAnswers[i]}
-                       onChange={(evt) => {
-                         const value = evt.target.checked;
-
-                         this.setState({
-                           answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
-                         });
-                       }}
+                  id={`answer-${i}`}
+                  checked={userAnswers[i]}
+                  onChange={(evt) => {
+                    const value = evt.target.checked;
+                    this.setState({
+                      answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
+                    });
+                  }}
                 />
                 <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
               </div>

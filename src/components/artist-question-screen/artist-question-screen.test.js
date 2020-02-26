@@ -27,7 +27,7 @@ it(`ArtistQuestionScreen is rendered correctly`, () => {
         renderPlayer={() => {}}
       />, {
         createNodeMock: () => {
-          return {}
+          return {};
         }
       }).toJSON();
 

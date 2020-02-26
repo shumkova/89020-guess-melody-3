@@ -18,7 +18,7 @@ it(`AudioPlayer is rendered correctly`, () => {
         onPlayButtonClick={() => {}}
       />, {
         createNodeMock: () => {
-          return {}
+          return {};
         }
       }).toJSON();
 

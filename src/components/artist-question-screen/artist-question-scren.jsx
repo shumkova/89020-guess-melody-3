@@ -17,10 +17,10 @@ const ArtistQuestionScreen = (props) => {
         {answers.map((answer, i) => (
           <div key={answer.artist} className="artist">
             <input className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`}
-                   onChange={(evt) => {
-                     evt.preventDefault();
-                     onAnswer(question, answer);
-                   }}
+              onChange={(evt) => {
+                evt.preventDefault();
+                onAnswer(question, answer);
+              }}
             />
             <label className="artist__name" htmlFor={`answer-${i}`}>
               <img className="artist__picture" src={answer.picture} alt={answer.artist} />
