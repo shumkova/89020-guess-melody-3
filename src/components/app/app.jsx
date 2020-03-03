@@ -5,10 +5,10 @@ import WelcomeScreen from "../welcome-screen/welcome-screen";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-scren";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
 import {GameType} from "../../const";
-import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
-const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
-const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends React.PureComponent {
 
