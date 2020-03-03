@@ -22,6 +22,7 @@ class App extends React.PureComponent {
       questions,
       onUserAnswer,
       onWelcomeButtonClick,
+      resetGame,
       step
     } = this.props;
     const question = questions[step];

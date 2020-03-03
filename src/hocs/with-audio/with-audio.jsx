@@ -58,7 +58,8 @@ const withAudio = (Component) => {
     }
 
     render() {
-      const {isLoading, isPlaying, onPlayButtonClick} = this.state;
+      const {isLoading, isPlaying} = this.state;
+      const {onPlayButtonClick} = this.props;
 
       return (
         <Component
