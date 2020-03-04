@@ -1,4 +1,4 @@
-import {shallow} from "enzyme";
+import {shallow, mount} from "enzyme";
 import GenreQuestionScreen from "./genre-question-screen";
 
 const mock = {
@@ -35,6 +35,8 @@ it(`When user answers genre question form is not sent`, () => {
         onAnswer={onAnswer}
         question={question}
         renderPlayer={() => {}}
+        onChange={() => {}}
+        userAnswers={[false, false, false, false]}
       />
   );
 
@@ -53,11 +55,13 @@ it(`User answer passed to callback is consistent with "userAnswer" prop`, () => 
   const onAnswer = jest.fn((...args) => [...args]);
   const userAnswer = [false, true, false, false];
 
-  const genreQuestion = shallow(
+  const genreQuestion = mount(
       <GenreQuestionScreen
         onAnswer={onAnswer}
         question={question}
         renderPlayer={() => {}}
+        onChange={() => {}}
+        userAnswers={userAnswer}
       />
   );
 
@@ -69,8 +73,7 @@ it(`User answer passed to callback is consistent with "userAnswer" prop`, () => 
 
   expect(onAnswer).toHaveBeenCalledTimes(1);
 
-  expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
-  expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
+  expect(onAnswer.mock.calls[0][0]).toEqual(void 0);
 
   expect(
       genreQuestion.find(`input`).map((it) => it.prop(`checked`))
