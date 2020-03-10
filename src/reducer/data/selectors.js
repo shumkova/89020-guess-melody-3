@@ -15,22 +15,22 @@ const randomFilter = () => {
 };
 
 export const getArtistQuestions = createSelector(
-  // Функция принимает state и возвращает результат
-  getQuestions,
-  // Функция так же принимает state и возвращает результат.
-  // Таких функций (геттеров) может быть множество
-  randomFilter,
-  // Последняя функция уже не геттер, а комбайнер,
-  // она принимает результаты всех предыдущих функций
-  // и возвращает результат на их основе
-  (resultOne, resultTwo) => {
-    return resultOne.filter((it) => resultTwo && it.type === `artist`);
-  }
+    // Функция принимает state и возвращает результат
+    getQuestions,
+    // Функция так же принимает state и возвращает результат.
+    // Таких функций (геттеров) может быть множество
+    randomFilter,
+    // Последняя функция уже не геттер, а комбайнер,
+    // она принимает результаты всех предыдущих функций
+    // и возвращает результат на их основе
+    (resultOne, resultTwo) => {
+      return resultOne.filter((it) => resultTwo && it.type === `artist`);
+    }
 );
 
 export const getGenreQuestions = createSelector(
-  getQuestions,
-  (questions) => {
-    return questions.filter((it) => it.type === `genre`);
-  }
+    getQuestions,
+    (questions) => {
+      return questions.filter((it) => it.type === `genre`);
+    }
 );
