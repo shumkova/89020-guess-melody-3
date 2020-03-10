@@ -6,6 +6,7 @@ import WelcomeScreen from "../welcome-screen/welcome-screen";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-scren";
 import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
+import AuthScreen from "../auth-screen/suth-screen";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
 import {GameType} from "../../const";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
@@ -102,6 +103,12 @@ class App extends React.PureComponent {
             <GenreQuestionScreenWrapped
               question={questions[0]}
               onAnswer={() => {}}
+            />
+          </Route>
+          <Route exact path="/dev-auth">
+            <AuthScreen
+              onReplayButtonClick={() => {}}
+              onSubmit={() => {}}
             />
           </Route>
         </Switch>
