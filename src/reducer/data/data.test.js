@@ -1,6 +1,6 @@
-const AVATAR_URL = `https://api.adorable.io/avatars/128`;
+import {reducer, ActionType} from "./data.js";
 
-export default [
+const questions = [
   {
     type: `genre`,
     genre: `rock`,
@@ -17,22 +17,39 @@ export default [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
     }],
-  },
-  {
+  }, {
     type: `artist`,
     song: {
       artist: `Jim Beam`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      picture: `${AVATAR_URL}/A`,
+      picture: `https://api.adorable.io/avatars/128/A`,
       artist: `John Snow`,
     }, {
-      picture: `${AVATAR_URL}/AB`,
+      picture: `https://api.adorable.io/avatars/128/AB`,
       artist: `Jack Daniels`,
     }, {
-      picture: `${AVATAR_URL}/AC`,
+      picture: `https://api.adorable.io/avatars/128/AC`,
       artist: `Jim Beam`,
     }],
   },
 ];
+
+
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    questions: [],
+  });
+});
+
+it(`Reducer should update questions by load questions`, () => {
+  expect(reducer({
+    questions: [],
+  }, {
+    type: ActionType.LOAD_QUESTIONS,
+    payload: questions,
+  })).toEqual({
+    questions,
+  });
+});
