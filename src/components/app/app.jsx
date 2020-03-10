@@ -1,6 +1,7 @@
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/reducer";
+import {ActionCreator} from "../../reducer/game/game";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-scren";
 import GameOverScreen from "../game-over-screen/game-over-screen";
@@ -9,6 +10,10 @@ import GenreQuestionScreen from "../genre-question-screen/genre-question-screen"
 import {GameType} from "../../const";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer";
+import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors.js";
+import {getQuestions} from "../../reducer/data/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -17,6 +22,8 @@ class App extends React.PureComponent {
 
   _renderGameScreen() {
     const {
+      authorizationStatus,
+      login,
       maxMistakes,
       mistakes,
       questions,
@@ -104,6 +111,8 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
   maxMistakes: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
@@ -114,13 +123,17 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.step,
-  maxMistakes: state.maxMistakes,
-  questions: state.questions,
-  mistakes: state.mistakes,
+  authorizationStatus: getAuthorizationStatus(state),
+  step: getStep(state),
+  maxMistakes: getMaxMistakes(state),
+  questions: getQuestions(state),
+  mistakes: getMistakes(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
   onWelcomeButtonClick() {
     dispatch(ActionCreator.incrementStep());
   },
