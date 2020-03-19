@@ -211,13 +211,13 @@ exports[`Render App Render GameOverScreen 1`] = `
   >
     У вас закончились все попытки. Ничего, повезёт в следующий раз!
   </p>
-  <button
+  <a
     className="replay"
+    href="/"
     onClick={[Function]}
-    type="button"
   >
     Попробовать ещё раз
-  </button>
+  </a>
 </section>
 `;
 
@@ -464,12 +464,12 @@ exports[`Render App Render WinScreen 1`] = `
     0
      ошибки
   </p>
-  <button
+  <a
     className="replay"
+    href="/"
     onClick={[Function]}
-    type="button"
   >
     Сыграть ещё раз
-  </button>
+  </a>
 </section>
 `;
