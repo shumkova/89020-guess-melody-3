@@ -8,13 +8,14 @@ import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
-import {GameType} from "../../const";
+import {GameType, AppRoute} from "../../const";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer";
 import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors.js";
 import {getQuestions} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import history from "../../history";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
